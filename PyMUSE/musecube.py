@@ -50,28 +50,17 @@ class MuseCube:
         """
 
         # init
-        self.color = False
-        self.cmap = ""
-        self.vmin = vmin
-        self.vmax = vmax
-        self.flux_units = flux_units
-        self.n = n_fig
-        plt.close(self.n)
-        self.wave_cal = wave_cal
+        #self.wave_cal = wave_cal
 
         self.filename = filename_cube
         self.filename_white = filename_white
         self.load_data()
 
         self.white_data = fits.open(self.filename_white)[1].data
-        self.hdulist_white = fits.open(self.filename_white)
-        self.white_data = np.where(self.white_data < 0, 0, self.white_data)
-        self.gc2 = aplpy.FITSFigure(self.filename_white, figure=plt.figure(self.n))
-        self.gc2.show_grayscale(vmin=self.vmin, vmax=self.vmax)
+        #self.white_data = np.where(self.white_data < 0, 0, self.white_data)
 
         # self.gc = aplpy.FITSFigure(self.filename, slices=[1], figure=plt.figure(20))
         self.pixelsize = pixelsize
-        gc.enable()
         # plt.close(20)
         print("MuseCube: Ready!")
 
